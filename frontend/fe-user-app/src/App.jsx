@@ -4,7 +4,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://bai-tap-web-ye3z.onrender.com")
+    fetch("https://bai-tap-web-ye3z.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error(err));
