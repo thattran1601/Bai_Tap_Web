@@ -20,7 +20,7 @@ app.get('/users', async (req, res) => {
 app.delete("/users",(req,res)=>{
     const id=req.params.id;
     const sql="delete from users where id = ?";
-    db.query(sql,(err,results)=>{
+    db.query(sql,[id],(err,results)=>{
         if(err)
         {
             console.log("Lỗi truy vấn",err);
