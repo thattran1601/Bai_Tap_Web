@@ -17,7 +17,7 @@ app.get('/users', async (req, res) => {
         }
     });
 });
-app.delete("/users",(req,res)=>{
+app.delete("/users/:id",(req,res)=>{
     const id=req.params.id;
     const sql="delete from users where id = ?";
     db.query(sql,[id],(err,results)=>{
