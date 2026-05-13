@@ -19,6 +19,7 @@ function App() {
             <th>ID</th>
             <th>Name</th>
             <th>Phone</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,22 @@ function App() {
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.phone}</td>
+              <td>
+                <button onClick={() => {
+                  if (window.confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
+                    fetch(`https://bai-tap-web-ye3z.onrender.com/users/${user.id}`, {
+                      method: "DELETE"
+                    })
+                      .then((res) => res.json())
+                      .then(() => {
+                        setUsers(users.filter((u) => u.id !== user.id));
+                      })
+                      .catch((err) => console.error(err));
+                  }
+                }}>
+                  Xóa
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
